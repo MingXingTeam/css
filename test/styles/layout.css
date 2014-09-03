@@ -9,11 +9,19 @@ body{
 	margin:0 auto;
 	width: 900px;
 }
-header{}
+header{
+	background-image: url(../images/guitarist.gif);
+	background-position: bottom right;
+	background-repeat: no-repeat;
+	border-width: 1px;
+	border-style: solid;
+	border-bottom-width: 0;
+}
 header nav{
 	background-image: url(../images/navbar.gif);
 	background-repeat: repeat-x;
 	background-position: bottom left;
+	padding-left: 10%;
 }
 header nav ul{
 	width:100%;
