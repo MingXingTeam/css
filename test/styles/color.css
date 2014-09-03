@@ -9,9 +9,13 @@ body{
 	background-color: #334;
 }
 header{
-
+	color:#ec8;
+	background-color: #334;
 }
-header nav{}
+header nav{
+	color:#455;
+	background-color: #789;
+}
 header nav ul{}
 header nav a:link{}
 header nav a:visited{}
