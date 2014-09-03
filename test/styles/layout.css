@@ -1,0 +1,31 @@
+/*公共样式*/
+*{
+	padding:0;
+	margin:0;
+}
+/*页面样式*/
+body{
+	margin:0 auto;
+	width: 900px;
+}
+header{}
+header nav{}
+header nav ul{
+	width:100%;
+	border-left-width: 1px;
+	border-left-style:solid;
+}
+header nav li{
+	display: inline;
+}
+header nav a{
+	display: block;
+	float:left;
+	border-right: 1px solid;
+	padding:5px 20px;
+}
+header nav a:link{}
+header nav a:visited{}
+header nav a:hover{}
+header nav a:active{}
+article{}

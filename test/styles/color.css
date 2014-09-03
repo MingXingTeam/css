@@ -1,0 +1,23 @@
+/*公共样式*/
+a:link{}
+a:visited{}
+a:hover{}
+a:active{}
+/*页面样式*/
+body{
+	color:#fb5;
+	background-color: #334;
+}
+header{
+
+}
+header nav{}
+header nav ul{}
+header nav a:link{}
+header nav a:visited{}
+header nav a:hover{
+	color:#445;
+	background-color: #eb6;
+}
+header nav a:active{}
+article{}
