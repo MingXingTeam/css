@@ -42,4 +42,17 @@ header nav a:link{}
 header nav a:visited{}
 header nav a:hover{}
 header nav a:active{}
+
+#about header {
+  background-image: url(../images/lineup.gif);
+}
+#photos header {
+  background-image: url(../images/basshead.gif);
+}
+#live header {
+  background-image: url(../images/bassist.gif);
+}
+#contact header {
+  background-image: url(../images/drummer.gif);
+}
 article{}
