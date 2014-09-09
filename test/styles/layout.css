@@ -42,6 +42,7 @@ header nav a:link{}
 header nav a:visited{}
 header nav a:hover{}
 header nav a:active{}
+article{}
 
 #about header {
   background-image: url(../images/lineup.gif);
@@ -55,4 +56,26 @@ header nav a:active{}
 #contact header {
   background-image: url(../images/drummer.gif);
 }
-article{}
+
+#slideshow {
+  width: 150px;
+  height: 150px;
+  position: relative;
+  overflow: hidden;
+}
+#preview {
+  position: absolute;
+  border-width: 0;
+  outline-width: 0;
+}
+#frame {
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: 99;
+  border-width: 0;
+  outline-width: 0;
+}
+#imagegallery li {
+  display: inline;
+}
