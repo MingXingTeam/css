@@ -32,3 +32,22 @@ header nav a.here:active{
 	background-color: #799;
 }
 article{}
+
+th{
+	color:#edc;
+	background-color: #455;
+}
+
+tr td{
+	color:#233;
+	background-color: #eb6;
+}
+
+tr.odd td{
+	color:#233;
+	background-color: #ec8;
+}
+tr.highlight td{
+	color:#233;
+	background-color: #cba;
+}
