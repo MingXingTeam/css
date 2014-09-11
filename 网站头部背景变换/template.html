@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<style>
+		*{padding: 0;margin: 0;}
+		body{margin:0 auto;width:900px;color:#12d;background-color: gray;}
+		/*导航*/
+		nav{
+			color:#23d;
+			background-color: green;/*能将网站头部背景延伸到导航的掩盖*/
+		}
+		ul{
+			width:100%;
+			border-left: 1px solid;
+			overflow: hidden;/*清楚浮动*/
+		}
+		li{
+			list-style: none;
+			display: inline;
+		}
+		a{
+			text-decoration: none;
+			display: block;
+			float:left;
+			border-right: 1px solid;
+			padding:5px 20px;
+		}
+		a:link{}
+		a:hover{
+			color:#234;
+			background-color: #45d;
+		}
+		a:active{
+			color:#1df;
+			background-color: #0fd;
+		}
+		a:visited{
+			color:#dd2;
+			background-color: #421;
+		}
+		/*网站LOGO变换*/
+		#about header{
+			width:100%;
+			background: url(medish.jpg) no-repeat bottom right;
+		}
+		#home header{
+			width:100%;
+			background: url(medish2.jpg) no-repeat bottom right;
+		}
+	</style>
+</head>
+<body>
+	<header>
+		<img src="medish3.jpg" alt=""><!-- 网站LOGO -->
+		<nav>
+			<ul>
+				<li><a href="home.html">HOME</a></li>
+				<li><a href="about.html">ABOUT</a></li>
+				<li><a href="live.html">LIVE</a></li>
+				<li><a href="contact.html">CONTACT</a></li>
+			</ul>
+		</nav>
+	</header>
+	<article>
+		
+	</article>
+	<script>
+		function addLoadEvent(func){
+			var oldload = window.onload;
+			if(typeof oldload=="function"){
+				window.onload = function(){
+					oldload();
+					func();
+				};
+			}else{
+				window.onload = func;
+			}
+		}
+		function changeHeaderBG(){
+			if(!document.getElementsByTagName) return false;
+			var allA = document.getElementsByTagName("a");
+			for(var i in allA){
+				var href = this.getAttribute("href");
+				if(window.location.href.indexOf(href)!=-1){
+					var linktext = allA[i].lastChild.nodeValue.toLowerCase();
+					document.body.setAttribute("id",linktext);					
+				}
+			}
+		}
+		addLoadEvent(changeHeaderBG);
+	</script>
+</body>
+</html>
+
+<!-- 将LOGO图片以及header图片的背景色设计成body标签的背景色  并将header添加边框，能改善视觉效果 -->
