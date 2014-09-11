@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<style>
+		/*原来是tr.odd，现在用tr.odd td。这种方式好处是过滤掉th*/
+		*{padding:0;margin:0;}
+		body{margin:0 auto;width:900px;font-family: 微软雅黑,serif;font-size: 13px;}
+
+		table{border-collapse: collapse;}
+
+		tr{
+			color:#123;
+			background-color: #e13;
+		}
+		tr.odd td{
+			color:#341;
+			background-color: #f2d;
+		}
+		tr.on td{
+			color:#ee2;
+			background-color: #ded;
+		}
+		th,td{
+			border:1px solid;
+			padding: 4px 20px;
+		}
+		th{
+			color:#344;
+			background-color:#ed2;
+		}
+		td{
+			color:#233;
+			background-color: #eb6;
+		}
+		
+		
+	</style>
+</head>
+<body>
+	<table>
+		<tr>
+			<th>项目1</th>
+			<th>项目2</th>
+			<th>项目3</th>
+			<th>项目4</th>
+			<th>项目5</th>
+		</tr>
+		<tr>
+			<td>内容1</td>
+			<td>内容1</td>
+			<td>内容1</td>
+			<td>内容1</td>
+			<td>内容1</td>
+		</tr>
+		<tr>
+			<td>内容1</td>
+			<td>内容1</td>
+			<td>内容1</td>
+			<td>内容1</td>
+			<td>内容1</td>
+		</tr>
+		<tr>
+			<td>内容1</td>
+			<td>内容1</td>
+			<td>内容1</td>
+			<td>内容1</td>
+			<td>内容1</td>
+		</tr>
+	</table>
+	<script>
+		function addLoadEvent(func){
+			var oldload = window.onload;
+			if(typeof oldload=="function"){
+				window.onload = function(){
+					oldload();
+					func();
+				};
+			}else{
+				window.onload = func;
+			}
+		}
+		function addClass(element,newClass){
+			var oldClass = element.className;
+			if(oldClass){
+				element.className = oldClass+" "+newClass;				
+			}else{
+				element.className = newClass;
+			}
+		}
+		function stripeTable(){
+			if(!document.getElementsByTagName) return false;//渐进增强
+			var alltr = document.getElementsByTagName("tr");
+			for(var i in alltr){
+				if(i%2!=0){//还有一种方式是加一个变量old来控制
+					addClass(alltr[i],"odd");
+				}
+			}
+		}
+		function selectTable(){
+			var alltr = document.getElementsByTagName("tr");
+			for(var i in alltr){
+				alltr[i].oldClass = alltr[i].className;//原先是用一个临时变量。现在采用增加一个oldClass属性。后者感觉更厉害点。
+				alltr[i].onmouseover = function(){
+					addClass(this,"on");
+				}
+				alltr[i].onmouseout = function(){
+					this.className = this.oldClass;
+				}
+			}
+		}
+		addLoadEvent(stripeTable);
+		addLoadEvent(selectTable);
+	</script>
+</body>
+</html>
