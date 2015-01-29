@@ -1,0 +1,20 @@
+#div1{
+	width: 100px;
+	height: 100px;
+}
+#div1 img
+{
+	
+	visibility: hidden;
+   
+}
+#div1:hover img
+{
+	visibility: visible;
+	/*延时显示*/
+	-webkit-transition-delay:2s;
+    -moz-transition-delay:2s;
+    -ms-transition-delay:2s;
+    -o-transition-delay:2s;
+    transition-delay:2s;
+}

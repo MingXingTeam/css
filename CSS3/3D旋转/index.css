@@ -1,0 +1,22 @@
+/*
+-webkit-perspective 只对子元素有效
+rotateX 绕x轴旋转 参数是旋转度数
+
+ */
+#div1{
+	margin: 0 auto;
+	width: 100px;
+	height: 100px;
+}
+#div1{
+	/*transform-style:preserve-3d;*/
+	perspective:150px;
+	-webkit-perspective:150px; 
+}
+
+#div2{
+	/*transform-style:preserve-3d;
+	translate3d(12,12,12);*/
+	transform: rotateX(45deg);
+	-webkit-transform: rotateX(45deg); 
+}

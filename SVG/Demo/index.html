@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+	<div id="board"></div>
+	<script src="js/jquery-1.10.1.js"></script>
+	<script src="js/modernizr.custom.js"></script>
+	<script src="js/raphael-min.js"></script>
+	<script src="data.php"></script>
+	<script>
+		var currentW = $(window).width();
+		var currentH = $(window).height();
+		var pager = new Raphael("board",currentW,currentH);
+
+	    var b = vmvideos.slice(32,51);
+	    var angleplus = 360/(b.length);
+	   
+	    // console.info(b[0].url);
+		var q = [];
+		function init(){
+			var j = 0;
+			for(var i =0;i<b.length;i++){
+				var img = new Image;
+				img.id = b[i].url;
+				
+				// console.info(i+"---------"+b[i].url);
+				img.onload = function(){
+					//加载图片
+					var c = pager.image(this.src, 690, 40, 210, 150).attr({
+		                opacity: 1//不可见
+		            });
+		            //给image增加一个id
+					c.node.id = this.id;
+					q.push(c);
+					
+					e = angleplus * j;
+					// c.animate({
+					// 	transform:"r "+e+" 800,500"
+					// },2000,function() {})
+					c.rotate(e, 800, 500);
+
+		            //裁剪Image图片
+		            c.node.setAttribute("clip-path", "url(#clip_ring)");
+		            //clipPath元素增加一个Path元素：
+		            //<path style="" fill="none" stroke="#000000" d="M800,500L853.4050241495155,266.01730107636234A240,240,0,0,0,746.5949758504846,266.01730107636234Z">
+		            $("clipPath")[0].appendChild(slicepath[2].node);
+		            j++;
+		            if(j==b.length){
+		            	//旋转整个圆
+	        			doRotateWheel();
+		            }
+				}
+
+				img.src = b[i].thumb;
+			}
+		}
+		function change(){
+			//定义路径
+			window.slicepath = [pager.path("M,800,500,L,853.4050241495155,266.01730107636234,A,240,240,0,0,0,746.5949758504846,266.01730107636234,z").attr({
+		            stroke: "none"
+		        }), pager.path("M,800,500,L,875.6571175451469,168.52450985817995,A,340,340,0,0,0,724.3428824548531,168.52450985817995,z").attr({
+		            stroke: "none"
+		        }), pager.path("M,800,500,L,876.4051981734494,66.68458867462846,A,440,440,0,0,0,723.5948018265507,66.68458867462846,z").attr({
+		            stroke: "none"
+		        })];
+		    //获得svg和defs元素
+		    var svg = document.getElementsByTagName("svg")[0];
+		    var defs = document.getElementsByTagName("defs")[0];
+
+		    //定义clipPath元素
+		    var ns = "http://www.w3.org/2000/svg";
+	        var c = document.createElementNS(ns, "clipPath");
+	        c.setAttribute("id", "clip_ring");
+	        defs.appendChild(c);
+	       
+	        //给Image绑定事件
+	        init();
+		}
+
+		function doRotateWheel(){
+			for(var i=0;i<q.length;i++){
+				var newgrade = 360 + angleplus * i;
+				// console.info("asdf："+angleplus * i);
+				// console.info("旋转的角度："+newgrade);
+				var loop = function() {
+					q[i].attr({
+						"transform": "r" + angleplus * i + " 800,500"
+					}).animate({
+						"transform": "r" + newgrade +  " 800,500"
+					}, 30000, loop);
+				};
+				loop();
+			}
+		}
+		change();
+	</script>
+</body>
+</html>

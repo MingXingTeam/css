@@ -1,0 +1,22 @@
+#div1{
+	width: 100px;
+	height: 100px;
+}
+#div1 img
+{
+	visibility: hidden;
+	opacity: 0;
+	/*all 指代所有属性；all可以替换为visibility
+	linear 指的是变换速率
+	*/
+	-webkit-transition:all 0.5s linear;
+	-moz-transition:all 0.5s linear;
+	-ms-transition:all 0.5s linear;
+	-o-transition:all 0.5s linear;
+	transition:all 0.5s linear;
+}
+#div1:hover img
+{
+	visibility:visible; 
+	opacity:1;
+}
