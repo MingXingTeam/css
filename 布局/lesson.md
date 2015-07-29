@@ -34,5 +34,77 @@
  fixed:相对视窗 空隙被填补
  absolute:相对第一个不为static定位的父元素 如果没有这样的父元素 就相对body元素，并且会随页面滚动而滚动 ** 待测试 **
  
- ##
+ ##float属性
+ 
+*可用于文字环绕图片*
 
+##clear属性
+clear:left 清除其他元素在它上面的向左浮动 使自己在浮动元素的下方
+
+##媒体查询
+```css
+@media screen and (min-width:600px){
+    
+}
+@media screen and (max-width:599px){
+}
+```
+
+##inline-block和float
+制作网格方面：inline-block比float好用  float需要clear
+
++ vertical-align会影响到inline-block元素 元素上下会有间隔 需要设置vertical-align:top;
++ 设置宽度
++ 如果元素（html标签）之间有空格会导致元素（渲染后）之间有间隙
+
+##column-count和column-gap
+```css3
+.three-column{
+    padding:1em;
+    -moz-column-count:3;
+    -moz-column-gap:1em;
+    -webkit-column-count:3;
+    -webkit-column-gap:1em;
+    column-count:3;
+    column-gap:1em;
+}
+```
+##flexbox属性
+```css3
+.container{
+    display:-webkit-flex;
+    display:flex;
+}
+.initial{
+    -webkit-flex:initial;
+    flex:initial;
+    width:200px;
+    min-width:100px;
+}
+.none{
+    -webkit-flex:none;
+    flex:none;
+    width:200px;
+}
+.flex1{
+    -webkit-flex:1;
+    flex:1;
+}
+.flex2{
+    -webkit-flex:2;
+    flex:2;
+}
+
+```
+*flexbox垂直居中布局*
+```css3
+.vertical-container{
+    height:300px;
+    display:-webkit-flex;
+    display:flex;
+    -webkit-align-items:center;
+    align-items:center;
+    -webkit-justify-content:center;
+    justify-content:center;
+}
+```
