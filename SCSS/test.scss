@@ -1,0 +1,164 @@
+@charset "UTF-8";
+
+/*变量*/
+$nav-color:#F90;
+nav{
+  $width:100px;
+  width:$width;
+  color:$nav-color;
+}
+
+$highlight-color:#F90;
+$highlight-border:1px solid $highlight-color;
+.selected{
+  border:$highlight-border;
+}
+
+/*嵌套*/
+#content{
+  article{
+    h1{color:#333;}
+    p{margin-bottom: 1.4em;}
+  }
+  aside{
+    background-color:#EEE;
+  }
+}
+
+/*父选择器标识符*/
+article a{
+  color:blue;
+  &:hover{color:red;}
+}
+
+/*群组选择器嵌套*/
+.container{
+  h1,h2,h3{margin-bottom: .8em;}
+}
+/*子组合选择器和同层组合选择器：> + ~
+> 直接子元素
++ 同层相邻元素
+~ 同层的元素
+*/
+article{
+  ~ article{border-top:1px dashed #ccc;}
+  > section{background:#333;}
+  dl > {
+    dt{color:#eee;}
+    dd{color:#555;}
+  }
+  nav + &{margin-top: 0;}
+}
+
+/*嵌套属性*/
+nav{
+  border:{/*不用重复写border*/
+    style:solid;
+    width:1px;
+    color:#ccc;
+  }
+}
+
+nav{
+  border:1px solid #ccc {
+    left:0px;/*例外*/
+    right:0px;
+  }
+}
+
+/*导入*/
+/*
+@import "colors" colors.scss
+*/
+
+/*默认变量值*/
+$link-color:blue;
+$link-color:red;
+a{
+  color:$link-color;//red
+}
+
+$fancybox-width:400px !default;/*如果导入的css库文件有$fancybox-width变量 则用库文件里面的*/
+.fancybox{
+  width:$fancybox-width;
+}
+
+/*嵌套导入*/
+aside{
+  //@import "blue-theme"
+}
+
+/*注释*/
+/*这种注释会出现在css文件中*/
+//这种不会
+
+/*混合器（mixin）*/
+@mixin rounded-corners{
+  -moz-border-radius:5px;
+  -webkit-border-radius: 5px;
+  border-radius:5px;
+}
+
+.notice{
+  @include rounded-corners;/*引用混合器中的代码*/
+}
+
+/*混合器中的css规则*/
+@mixin no-bullets{
+  list-style: none;
+  li{
+    list-style-image: none;
+    list-style-type: none;
+    margin-left: 0px;
+  }
+}
+
+ul.plain{
+  color: #444444;
+  @include no-bullets;
+}
+
+/*给混合器传参*/
+@mixin link-colors($normal,$hover,$visited){
+  color:$normal;
+  &:hover{color:$hover;}
+  &:visited{color:$visited;}
+}
+
+/*调用方式*/
+a{
+  @include link-colors(blue,red,green)
+}
+/*另外一个方式（避免参数传递错误）*/
+a{
+  @include link-colors(
+  $normal:blue,
+  $visited:green,
+  $hover:red
+  )
+}
+
+/*选择器继承精简css*/
+.error{
+  border:1px red;
+}
+.seriousError{
+  @extend .error;/*继承.error样式*/
+}
+
+/*继承的高级用法:继承html元素的样式*/
+.disabled{
+  color:gray;
+  @extend a;
+}
+
+/*继承的最佳实践:不要用后代选择器去继承 如下为不好的方式*/
+.foo .bar{
+  @extend .baz;
+}
+.bip .baz{
+  a:b;
+}
+
+
+
