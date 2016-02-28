@@ -1,0 +1,20 @@
+{
+  "name": "react-webpack-demo",
+  "version": "1.0.0",
+  "description": "+ 创建目录和文件 + cmd=>npm init + cmd=>",
+  "main": "index.js",
+  "dependencies": {
+    "browserify": "^12.0.1",
+    "react": "^0.14.3",
+    "react-dom": "^0.14.3",
+    "reactify": "^1.1.1"
+  },
+  "devDependencies": {
+    "jsx-loader": "^0.13.2"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "ISC"
+}

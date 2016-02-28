@@ -1,0 +1,5 @@
+//
+
+>echo $path
+>which nodemon
+>

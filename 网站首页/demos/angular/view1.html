@@ -1,0 +1,12 @@
+
+<div>
+    view1
+    <input type="text" data-ng-model="name"/>
+    <ul>
+        <li data-ng-repeat="one in customers | filter:name | orderBy:city"><!--filter直接过滤了-->
+            {{one.name | uppercase}} == {{one.city}}
+        </li>
+    </ul>
+
+    go view2 <a href="#/2">View 2</a>
+</div>

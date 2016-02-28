@@ -1,0 +1,7 @@
+https://www.youtube.com/watch?v=3B5RDAps9mA
+
+jsx -x jsx component/ build/
+
+node_modules/.bin/babel --presets react /Users/maomao/Desktop/code/front_end/show/demos/react/component
+--out-dir  /Users/maomao/Desktop/code/front_end/show/demos/react/build
+

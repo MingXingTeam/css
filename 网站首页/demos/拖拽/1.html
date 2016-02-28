@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+    <style>
+        .test{
+            width:200px;
+            height:200px;
+            background: blue;
+            position: absolute;
+        }
+    </style>
+</head>
+<body>
+    pageX:<div id="pageX"></div>&nbsp;&nbsp;pageY: <div id="pageY"></div>
+    offsetLeft: <div id="left"></div>&nbsp;&nbsp;offsetTop: <div id="top"></div>
+    <div class="test" id="test">
+
+    </div>
+    <script>
+        drag("test")
+        function drag(id){
+            var obj = document.getElementById(id)
+            var disX = 0;
+            var disY = 0;
+            obj.onmousedown = function (ev) {
+                /*当前*/
+                document.getElementById("pageX").innerHTML=ev.pageX;
+                document.getElementById("pageY").innerHTML=ev.pageY;
+                document.getElementById("left").innerHTML=obj.offsetLeft;
+                document.getElementById("top").innerHTML=obj.offsetTop;
+                disX = ev.pageX - obj.offsetLeft;
+                disY = ev.pageY - obj.offsetTop;
+                document.onmousemove = function(ev){
+                    obj.style.left = ev.pageX - disX +"px"
+                    obj.style.top = ev.pageY - disY + "px"
+                }
+                document.onmouseup = function(){
+                    document.onmousemove = null
+                    document.onmouseup = null
+                }
+
+            }
+            return false;
+        }
+    </script>
+</body>
+</html>

@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="Demo">
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+    <link rel="stylesheet" href="./bootstrap.min.css"/>
+    <script src="./angular.min.js"></script>
+</head>
+<body ng-controller="Demo">
+Name: <input type="text" ng-model="name"/>
+<!--<div>-->
+<!--Hello <span ng-bind="name"></span>-->
+<!--</div>-->
+
+print mytag----><div mytag></div>
+
+<!--<pre>{{name}}:{{leak}}</pre>-->
+<script>
+    'use strict'
+
+    var demo = angular.module("Demo",[])
+
+    demo.controller("Demo",function($scope) {
+        $scope.name="maomoa"
+        $scope.leak = "fuck"
+    })
+
+    <script>
+        'use strict'
+
+        var demo = angular.module("Demo",[])
+
+        demo.directive("mytag",function(){
+            return {
+                link:function linkFn(scope,lElement,attrs){
+                    console.log("linkFn:"+scope+"---"+lElement+"---"+attrs)
+
+
+//                    lElement.text("hello "+scope.name)/*更改name mytag里面的name属性不会更新*/
+                    scope.$watch(attrs.mytag,function(){
+                        lElement.text("hello "+scope.name)
+                    })
+                }
+//                ,
+//                template:'hello boy'
+            }
+        })
+    </script>
+</body>
+</html>

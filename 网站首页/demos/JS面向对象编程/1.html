@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+</head>
+<body>
+<div id="test"></div>
+<script>
+    //常规写法:基于原型
+    /*function AA(){
+        this.name = "小明";
+    }
+    AA.prototype.showName = function(){
+        console.info(this.name)
+    }
+    var aa = new AA;
+    aa.showName();
+    */
+    //修改push,pop,unshift(将元素加到数组头),shift（移除数组头部元素）,slice(截取数组并返回新数组),splice(改变数组的内容),sort
+    //String charAt indexOf
+    //new String
+    /*var a = [1,2,3]
+    Array.prototype.push = function(){
+        for(var i = 0;i<arguments.length;i++){
+            this[this.length] = arguments[i];
+        }
+        return this.length;
+    }*/
+    //包装对象
+    /*var a = "Hello"//包装成new String 包装完后该包装对象消失
+    console.info(a.charAt(1));
+    */
+
+    /*
+    __proto__指向对象的原型
+    prototype 是
+    */
+
+    /*自定义事件
+    * dom也是一个对象 可以绑定属性
+    * */
+   /* function bindEvent(eventName,dom,callback){
+
+        dom.listeners = dom.listeners || {}
+        dom.listeners[eventName] = dom.listeners[eventName] || []
+        dom.listeners[eventName].push(callback)//保存回调
+
+        if(dom.addEventListener){
+            dom.addEventListener(eventName,callback,false)/!*不捕获事件*!/
+        }else{
+            dom.attachEvent("on"+eventName,callback)
+        }
+    }
+
+    function fireEvent(dom,eventName){
+        var listeners = dom.listeners[eventName]
+        for(var i =0;i<listeners.length;i++){
+            listeners[i]();
+        }
+    }
+
+    var test = document.getElementById("test")
+    bindEvent("click",test,function(){
+        alert(1)
+    })
+    fireEvent(test,"click");*/
+
+    //hasOwnProperty
+    /*var a = function(){}
+    a.prototype.m = 12
+    var b = new a
+    b.m = 12
+    alert(b.hasOwnProperty("m"))*/
+
+    //constructor
+    /*function a(){}
+    b = new a
+    alert(a.constructor === Function)*/
+    /*var a = []//new Array 默认将构造函数放在原型上 a.prototype.constructor = Array
+    alert(a.constructor == Array);*/
+
+
+    /*var a = []
+    a.prototype.m = 12//函数才有prototype
+    alert(a.m)*/
+
+/*
+    var a = function(){}
+    a.prototype ={}/!*将原型默认的一些属性和方法都改了*!/
+    var b = new a()
+*/
+/*
+    alert(b.constructor==a)
+    alert(b.constructor==Object)//类型判断
+*/
+
+/*
+    a.prototype = {
+        constructor:a
+    }
+    var b = new a()
+    alert(b.constructor==a)
+    alert(b.hasOwnProperty)//根据原型链向上查找 hasOwnProperty是Object的原型链的属性
+*/
+  /*var a = function(){
+
+  }
+
+    a.prototype.constructor = a;
+    for(var attr in a.prototype){
+        alert(attr)//无法弹出constructor 有些属性是没法弹出的
+    }*/
+
+    //instanceOf 类型判断
+
+
+</script>
+</body>
+</html>

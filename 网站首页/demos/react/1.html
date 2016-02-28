@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+    <link rel="stylesheet" href="../../style/bootstrap.min.css"/>
+</head>
+<body>
+<div>Hello</div>
+<div id="container"></div>
+<script src="https://fb.me/react-0.14.3.js"></script>
+<script src="https://fb.me/react-dom-0.14.3.js"></script>
+<script src="https://fb.me/JSXTransformer-0.12.2.js"></script>
+<script src="./component/Demo.jsx" type="text/jsx"></script>
+<script src="./component/RadioOption.jsx" type="text/jsx"></script>
+<script src="./component/RadioOptionGroup.jsx" type="text/jsx"></script>
+<script src="./component/RadioOtherOption.jsx" type="text/jsx"></script>
+<script type="text/jsx">
+//    var demo = React.createElement(Demo)
+    ReactDOM.render(<Demo />,document.getElementById('container'))
+</script>
+</body>
+</html>

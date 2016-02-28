@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="Demo">
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+    <link rel="stylesheet" href="./bootstrap.min.css"/>
+    <style>
+        #test{
+            width:100px;
+            height:100px;
+            background-color: red;
+
+        }
+        .zippy{
+            width:300px;
+            background-color: red;
+            display: block;
+        }
+        .title{
+            width:100%;
+            height:40px;
+            background-color: black;
+        }
+        .sbody{
+            width:100%;
+            height:400px;
+            background-color: blue;
+        }
+        .opened .sbody{
+            display:block;
+        }
+
+        .closed .sbody{
+            display:none;
+        }
+    </style>
+    <script src="./angular.min.js"></script>
+</head>
+<body ng-controller="Demo">
+<input type="text" ng-model="greeting"/>
+<hr/>
+<zippy aa="{{greeting}}">
+    Hello {{name}}
+</zippy>
+<script>
+    'use strict'
+
+    var demo = angular.module("Demo",[])
+
+    demo.controller("Demo",function($scope) {
+        $scope.greeting = "title"
+        $scope.name = "maomao"
+    })
+
+    demo.directive("zippy",function($parse){
+        return {
+            restrict:"E",
+            scope:{
+                title:"@aa"
+            },
+            template:"<div class='zippy {{state}}'><div class='title' ng-click='toggle()'>{{title}}</div><div class='sbody'></div></div>",
+            link:function(scope,lElement,attrs){
+                scope.state = "opened"
+                scope.toggle = function(){
+                    scope.state = scope.state=='opened'?'closed':'opened'
+                }
+            }
+        }
+    })
+    </script>
+</body>
+</html>

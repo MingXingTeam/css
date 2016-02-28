@@ -1,0 +1,13 @@
+<div>
+    view2
+    <input type="text" data-ng-model="name"/>
+    <ul>
+        <li data-ng-repeat="one in customers | filter:name | orderBy:city"><!--filter直接过滤了-->
+            {{one.name | uppercase}} == {{one.city}}
+        </li>
+    </ul>
+    <br/>
+    Name: <input type="text" data-ng-model="newCustomer.name"/>
+    City: <input type="text" data-ng-model="newCustomer.city"/>
+    <button data-ng-click="addCustomer()">addCustomer</button>
+</div>

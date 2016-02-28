@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="Demo">
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+    <link rel="stylesheet" href="./bootstrap.min.css"/>
+    <style>
+        #test{
+            width:100px;
+            height:100px;
+            background-color: red;
+
+        }
+    </style>
+    <script src="./angular.min.js"></script>
+</head>
+<body ng-controller="Demo">
+<div ng-repeat="aa in devs"><!--必须取名字为aa-->
+    <profile obj="aa"></profile>
+  <!--  <div class="profile">
+        <img alt="" ng-src="{{email | gravatar}}"/>
+        <h1>{{email}}</h1>
+    </div>-->
+</div>
+<script>
+    'use strict'
+
+    var demo = angular.module("Demo",[])
+
+    demo.controller("Demo",function($scope) {
+        $scope.devs = [
+            {
+                email:"12424@123123"
+            },
+            {
+                email:"aa@aa"
+            }
+        ]
+    })
+
+    demo.directive("profile",function($parse){
+        return {
+            restrict:"E",
+            scope:{
+                obj:"="
+            },
+            templateUrl:'./profile.html'
+        }
+    })
+    </script>
+</body>
+</html>

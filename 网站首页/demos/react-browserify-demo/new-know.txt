@@ -1,0 +1,3 @@
+npm [some module] --save-dev
+
+--save-dev是保持在当前目录

@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html lang="en" data-ng-app=""><!--默认不写-->
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+    <link rel="stylesheet" href="./bootstrap.min.css"/>
+</head>
+<body data-ng-init="names=['a','b']">
+    <div >
+        <ul>
+            <li data-ng-repeat="one in names">
+                {{one}}
+            </li>
+        </ul>
+    </div>
+<script src="./angular.min.js"></script>
+</body>
+</html>

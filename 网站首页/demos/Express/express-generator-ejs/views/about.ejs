@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title><%= title %></title>
+    <link rel='stylesheet' href='/stylesheets/style.css' />
+</head>
+<body>
+<!--导入模板-->
+<% include template/header.ejs %>
+
+<h1><%= title %></h1>
+<p>Welcome to <%= title %></p>
+
+<!--循环-->
+<ul>
+    <%for(var i =0;i<5;i++){%>
+    <li><%=name%></li>
+    <%}%>
+
+</ul>
+
+
+
+</body>
+</html>

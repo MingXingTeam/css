@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en" data-ng-app="demo"><!--默认不写-->
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+    <link rel="stylesheet" href="./bootstrap.min.css"/>
+</head>
+<body data-ng-controller="simpleController">
+<input type="text" data-ng-model="name"/>
+
+<div>
+    <ul>
+        <li data-ng-repeat="one in customers | filter:name | orderBy:city"><!--filter直接过滤了-->
+            {{one.name | uppercase}} == {{one.city}}
+        </li>
+    </ul>
+</div>
+<script src="./angular.min.js"></script>
+<script>
+    function simpleController($scope) {
+        $scope.customers = [{name: 'dfdfgdfg', city: 'New York'}, {name: 'baaa', city: 'Bei jing'}, {
+            name: 'Joneaa',
+            city: 'Tokeyo'
+        }];
+    }
+
+    var demo = angular.module("demo",[])//第二個參數是依賴模塊
+    demo.controller("simpleController",simpleController)
+</script>
+</body>
+</html>

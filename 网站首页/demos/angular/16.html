@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en" data-ng-app="demo"><!--默认不写-->
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+    <link rel="stylesheet" href="./bootstrap.min.css"/>
+</head>
+<body data-ng-controller="simpleController">
+
+<div data-ng-view=""></div>
+
+<script src="./angular.min.js"></script>
+<script>
+    var controllers = {}
+    controllers.simpleController = function ($scope) {
+        $scope.customers = [{name: 'dfdfgdfg', city: 'New York'}, {name: 'baaa', city: 'Bei jing'}, {
+            name: 'Joneaa',
+            city: 'Tokeyo'
+        }];
+
+        $scope.addCustomer = function(){
+            $scope.customers.push({
+                name:$scope.newCustomer.name,
+                city:$scope.newCustomer.city
+            })
+        }
+    }
+
+    var demo = angular.module("demo", [])//第二個參數是依賴模塊
+    demo.config(function ($routeProvider) {
+        $routeProvider.when('/', {
+            controller: controllers.simpleController,
+            templateUrl: './view1.html'
+        }).when('/2', {
+            controller: controllers.simpleController,
+            templateUrl: "./view2.html"
+        }).otherwise({redirectTo: '/'})
+    })
+
+//当跳转到view2时 原先添加的customer不存在了。。
+    demo.controller(controllers)
+</script>
+</body>
+</html>

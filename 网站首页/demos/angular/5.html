@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="Demo">
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+    <link rel="stylesheet" href="./bootstrap.min.css"/>
+    <style>
+        #test{
+            width:100px;
+            height:100px;
+            background-color: red;
+
+        }
+    </style>
+    <script src="./angular.min.js"></script>
+</head>
+<body ng-controller="Demo">
+Name: <input type="text" ng-model="name"/>
+<!--<div>-->
+<!--Hello <span ng-bind="name"></span>-->
+<!--</div>-->
+
+<div id="test" class="mytag:name"></div>
+
+<!--<pre>{{name}}:{{leak}}</pre>-->
+<script>
+    'use strict'
+
+    var demo = angular.module("Demo",[])
+
+    demo.controller("Demo",function($scope) {
+        $scope.name="maomoa"
+        $scope.leak = "fuck"
+    })
+
+        demo.directive("mytag",function($parse){
+            return {
+                restrict:"AC",
+                link:function linkFn(scope,lElement,attrs){
+                    console.log("linkFn:"+scope+"---"+lElement+"---"+attrs)
+
+                    lElement.bind("click",function(){
+                        lElement.text("hello "+scope.name)
+//                        console.log("click",Error().stack) //打印错误的堆栈
+                        //写法1
+//                        scope.name = "asdf"
+//                        scope.$apply();
+                      //写法2
+                        scope.$apply(function(){
+                            scope.name = "fasfd"
+                        })
+
+                        //写法3:有点问题
+
+                        /*scope.$apply(function(){
+                            $parse(attrs.mytag).assign(scope,"adf")
+                        })*/
+                    })
+                }
+//                ,
+//                template:'hello boy'
+            }
+        })
+    </script>
+</body>
+</html>

@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="aa">
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+    <script src="./angular.min.js"></script>
+</head>
+<body>
+<div id="test" ng-controller="TestCon">
+    {{name}}
+    <ul>
+        <li ng-repeat="family2 in family">
+            {{family2.name}}
+            {{family2.sex}}
+        </li>
+    </ul>
+</div>
+<script>
+    var aa = angular.module("aa", []);
+    aa.controller('TestCon', function ($scope) {
+        $scope.name = "maomao";
+
+        var family = [
+            {
+                name: "11",
+                sex: "man"
+            },
+            {
+                name:"11",
+                sex:"woman"
+            }
+        ]
+
+        $scope.family = family
+    })
+
+</script>
+</body>
+</html>
